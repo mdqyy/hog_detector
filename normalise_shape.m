@@ -1,5 +1,6 @@
 function [normalized_shape] = normalise_shape(shape,AAM_model_path)
 
+scale = 1;
 load(AAM_model_path)
 
 % CHECK IF WE CAN WRITE THIS FUNCTION VECTORIZED

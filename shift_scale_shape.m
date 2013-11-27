@@ -1,4 +1,4 @@
-function [shifted_normalized_shape] = functionn shift_scale_shape(normalized_shape,SIZEX,SIZEY)
+function [shifted_normalized_shape] = shift_scale_shape(normalized_shape,SIZEX,SIZEY)
 
 % WE CAN SURELY WRITE THIS FUNCTION VECTORIZED
 
