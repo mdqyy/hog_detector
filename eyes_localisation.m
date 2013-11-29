@@ -35,4 +35,8 @@ l_eyes_texture = crop_texture(normalised_texture, l_eyes_box);
 % calculate eyes shape
 [l_eyes_shape,l_eye_ind] = shift_eyes_shape(wraped_shape,l_eye_ind,l_eyes_box,width,height);
 
+% for speed efficiency we will save eyes texture
+%data_path = '/vol/bitbucket/ns2212/Eyes/'
+%save([ data_path '/' regexp(video_path,'[\w\-]+\d{3}','match','once') '-' num2str(start_frame,'%06d') '-' num2str(end_frame,'%06d')])
+
 end

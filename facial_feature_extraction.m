@@ -20,7 +20,7 @@ function [matrix] = convert_cmu_cell_to_matrix(cell_struct,start_frame,end_frame
 	for i=start_frame:end_frame
 
 		if ~isempty(cell_struct{i})
-			matrix(:,:,i) = cell_struct{i}.pred;
+			matrix(:,:,i-start_frame+1) = cell_struct{i}.pred;
 		end
 
 	end
