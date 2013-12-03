@@ -33,6 +33,8 @@ descriptor = 'hog';
 
 target_dimensions = [24,40,11];
 
+tracker = 'cmu';
+
 tic
-pre_processing(aam_path,blink_matrix,descriptor,options,target_dimensions);
+pre_processing(aam_path,blink_matrix,descriptor,options,target_dimensions,tracker);
 toc

@@ -5,7 +5,7 @@ function [predictions] = classify(model,test_set,algorithm)
 		% project the test set in the lda space
 		proj_test_set = test_set * model.projection;
 
-		% look if we can eliminate this for loop
+		% LOOK if we can eliminate this for loop
 		for i=1:length(model.label)
 
 			% construct a matrix with that each column is the difference between the projected
@@ -14,8 +14,10 @@ function [predictions] = classify(model,test_set,algorithm)
 
 		end
 
+		% find the indices of the minimum distance from the representatives
 		[~,ind] = min(difference_matrix,[],2);
 
+		% predictions can be constructed using the indices and the labels vector
 		predictions = model.label(ind);
 
 	end

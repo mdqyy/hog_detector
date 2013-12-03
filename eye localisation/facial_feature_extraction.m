@@ -4,7 +4,7 @@ function [shape] = facial_feature_extraction(shape_path,video_path,start_frame,e
 		load(shape_path) 
 	else
 		% we use supervised descent algorithm to track our points
-		result = run_CMU_tracker(video_path,start_frame,end_frame); 
+		result = run_CMU_tracker(video_path); 
     end
     
 	shape = convert_cmu_cell_to_matrix(result,start_frame,end_frame);

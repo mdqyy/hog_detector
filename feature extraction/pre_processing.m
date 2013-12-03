@@ -1,10 +1,10 @@
-function [examples,targets] = pre_processing(aam_path,blinks_data_struct,descriptor,options,target_texture_dimensions)
+function [examples,targets] = pre_processing(aam_path,blinks_data_struct,descriptor,options,target_texture_dimensions,tracker)
 
 % the number of examples is the number of rows of blinks_data_struct
 nb_examples = length(blinks_data_struct);
 
 % the feature size can be extracted by calculating the descriptor in a black image
-feature_size = size(calculate_descriptor(zeros(target_texture_dimensions),target_texture_dimensions,descriptor,options));
+feature_size = size(calculate_descriptor(zeros(target_texture_dimensions),zeros(49,2),target_texture_dimensions,descriptor,options));
 
 % initialisation of our matrices for speed efficiency
 examples = zeros([nb_examples,feature_size]);
@@ -25,10 +25,10 @@ for i=1:nb_examples
 
 	tic	
 	% Locate eyes and extract the texture
-	[eyes_texture, eyes_shape] = eyes_localisation(vid,shape_path,aam_path,start_frame,end_frame);
+	[eyes_texture, eyes_shape] = eyes_localisation(vid,shape_path,tracker,aam_path,start_frame,end_frame);
 	
 	% calculate features representing the texture 
-	examples(i,:) = calculate_descriptor(eyes_texture,target_texture_dimensions,descriptor,options);
+	examples(i,:) = calculate_descriptor(eyes_texture,eyes_shape,target_texture_dimensions,descriptor,options);
 
 	targets(i,:) = target;
 
