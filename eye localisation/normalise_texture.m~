@@ -1,8 +1,7 @@
 function [wraped] = normalise_texture(video_path,wraped_shape,original_shape,width,height,startFrame,endFrame)
 
 disp('..loading the video..')
-% hack to speed up the reading
-vid = video_path;%VideoReader(video_path);
+vid = VideoReader(video_path);
 
 if ~exist('startFrame'), startFrame = 1; end
 if ~exist('endFrame'), endFrame = vid.NumberOfFrames; end
@@ -10,11 +9,11 @@ if ~exist('endFrame'), endFrame = vid.NumberOfFrames; end
 addpath(genpath('~/Dropbox/Research/Code/AAM/'))
 
 disp('..loaded..')
-tic
+
 wraped = zeros(height,width,endFrame-startFrame+1,'uint8');
 
 for i=startFrame:endFrame
-    
+    i
     if (mod(i,1000)==1), disp(i), end;
 	    
     test_img = rgb2gray(read(vid,i)); 
@@ -29,9 +28,9 @@ for i=startFrame:endFrame
         wraped(:,:,i-startFrame+1) = imresize(uint8(new_warp_image(target_shape(:), source_shape(:), test_img ) ),[height width]);  
 	end
         
+	imshow(test_img)
+    hold on
+    plo
 end
-
-%disp(toc)
-
 
 end

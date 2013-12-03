@@ -1,4 +1,5 @@
 clear all
+addpath(genpath('.'))
 
 video_dir = '/vol/hci2/projects/Aaron/DeceptionVideos/CulturalBenchmarks/CAM2';
 avi = dir([video_dir '/*.avi']);
@@ -30,6 +31,8 @@ options.block_step = 1;
 
 descriptor = 'hog';
 
-target_dimensions = [24,40,11]
+target_dimensions = [24,40,11];
 
+tic
 pre_processing(aam_path,blink_matrix,descriptor,options,target_dimensions);
+toc

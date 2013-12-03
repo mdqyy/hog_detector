@@ -1,6 +1,7 @@
 function [shifted_normalized_shape] = shift_scale_shape(normalized_shape,SIZEX,SIZEY)
 
 % WE CAN SURELY WRITE THIS FUNCTION VECTORIZED
+shifted_normalized_shape = zeros( size(normalized_shape) );
 
 nb_frames = size(normalized_shape,3);
 for i=1:nb_frames
