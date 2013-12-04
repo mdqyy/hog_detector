@@ -1,13 +1,10 @@
 function [wraped] = normalise_texture(video_path,wraped_shape,original_shape,width,height,startFrame,endFrame)
 
-% disp('..loading the video..')
-% vid = VideoReader(video_path);
-% disp('..loaded..')
+disp('..loading the video..')
 
 %%% HACK to speed up the reading
-vid = video_path;
-video_path = vid.name;
-data_path = '/vol/bitbucket/ns2212/Eyes';
+% vid = video_path;
+% video_path = vid.name;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 if ~exist('startFrame'), startFrame = 1; end
@@ -17,11 +14,16 @@ addpath(genpath('~/Dropbox/Research/Code/AAM/'))
 
 %%%%%%% SPEED UP THIS PART BY LOADING PRE-PROCESSED %%%%
 texture_name = [regexp(video_path,'[\w\-]+\d{3}','match','once') '-' num2str(startFrame,'%06d') '-' num2str(endFrame,'%06d')];
+
+data_path = '/vol/bitbucket/ns2212/Eyes';
 mat = dir([data_path '/' texture_name '*.mat']);
-if ~isempty(mat), load([data_path '/' mat.name]), else
+if ~isempty(mat), load([data_path '/' mat.name]), disp('..already loaded..'), else
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% else
+
+vid = VideoReader(video_path);
+disp('..loaded..')
+
 wraped = zeros(height,width,endFrame-startFrame+1,'uint8');
 
 for i=startFrame:endFrame

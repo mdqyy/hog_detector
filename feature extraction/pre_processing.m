@@ -17,23 +17,22 @@ for i=1:nb_examples
 	[start_frame,end_frame,video_path,shape_path,target] = struct_to_variables(blinks_data_struct{i});
 
 	%%%%%%%%%%%% HACK to speed up the compuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	old_video_path = '';
-	if i>1, [~,~,old_video_path] = struct_to_variables(blinks_data_struct{i-1}); end
-	if strcmp(old_video_path,video_path), disp('..video already loaded..')
-	else, disp('..loading..'); vid = VideoReader(video_path); disp('..loaded..'); end
+	%old_video_path = '';
+	%if i>3053, [~,~,old_video_path] = struct_to_variables(blinks_data_struct{i-1}); end
+	%if strcmp(old_video_path,video_path), disp('..video already loaded..')
+	%else, disp('..loading..'); vid = VideoReader(video_path); disp('..loaded..'); end
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-	tic	
+	
 	% Locate eyes and extract the texture
-	[eyes_texture, eyes_shape] = eyes_localisation(vid,shape_path,tracker,aam_path,start_frame,end_frame);
+	[eyes_texture, eyes_shape] = eyes_localisation(video_path,shape_path,aam_path,tracker,start_frame,end_frame);
 	
 	% calculate features representing the texture 
 	examples(i,:) = calculate_descriptor(eyes_texture,eyes_shape,target_texture_dimensions,descriptor,options);
 
 	targets(i,:) = target;
 
-	rest(i) = toc;
-	disp(mean(rest))
+	%rest(i) = toc;
+	%disp(mean(rest))
 
 end
 

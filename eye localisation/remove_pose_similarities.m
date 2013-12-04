@@ -33,5 +33,19 @@ similarity_pose_free_shape = similarity_pose_free_shape - pose_eigenvecs*(pose_e
 end
 
 
+function [] = new_remove_pose_similarities()
 
+shape = reshape( shape,[],size(shape,3) );
+
+% Remove similarity by projecting on the orthogonal of the similarity space
+% (which is represented by 4 eigen-vectors)
+mean_shape = mean_shape(:);
+
+bsxfun(@mul,similarity_vecs, bsxfun(@mul, similarity_vecs', bsxfun(@minus,shape,mean_shape) ) );
+
+bsxfun(@plus,shape,mean_shape);
+
+similarity_pose_free_shape = reshape(unshifted_normalized_shape, [], 2);
+
+end
 

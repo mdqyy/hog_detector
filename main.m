@@ -35,6 +35,11 @@ target_dimensions = [24,40,11];
 
 tracker = 'cmu';
 
+k_fold = 10;
+
+algorithm = 'lda'
+
+ml_options = [];
 tic
-pre_processing(aam_path,blink_matrix,descriptor,options,target_dimensions,tracker);
+experiment(blink_matrix,aam_path,tracker,descriptor,options,target_dimensions,k_fold,algorithm,ml_options)
 toc

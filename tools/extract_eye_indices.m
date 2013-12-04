@@ -1,9 +1,18 @@
-function [l_eye_ind,r_eye_ind] = extract_eye_indices(tracker)
+function [indices] = extract_eye_indices(tracker,which_eye)
 
 	if strcmp(tracker,'cmu')
 
-		l_eye_ind = [20:25];
-		r_eye_ind = [26:31];
+		if strcmp(which_eye,'left')
+
+			indices = [20:25];
+
+		end
+		
+		if strcmp(which_eye,'right')
+
+			indices = [26:31];
+
+		end
 
 	end
 
