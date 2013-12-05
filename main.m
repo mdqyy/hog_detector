@@ -16,11 +16,13 @@ blink_dataset_path = 'blink_dataset.mat';
 start_frame = 1001;
 end_frame   = 1010;
 
+database = 'cultural-benchmarks';
+
 % texture = eyes_localisation(video_path,shape_path,aam_path,start_frame,end_frame);
 % texture = eyes_localisation(video_path,shape_path,aam_path,2001,2010);
 corrupted_videos = [80,87,88,96,102,103,107:110,123,127,131,132,134];
 
-blink_matrix = convert_blink_dataset_to_matrix(blink_dataset_path,video_dir,shape_dir,corrupted_videos);
+blink_matrix = convert_blink_dataset_to_matrix(blink_dataset_path,video_dir,shape_dir,corrupted_videos,database);
 
 options.n_bins  = 9;
 options.w_cell  = 8;
@@ -39,7 +41,7 @@ k_fold = 10;
 
 algorithm = 'lda'
 
-ml_options = [];
+ml_options.PCARation = 0.1
 tic
 experiment(blink_matrix,aam_path,tracker,descriptor,options,target_dimensions,k_fold,algorithm,ml_options)
 toc

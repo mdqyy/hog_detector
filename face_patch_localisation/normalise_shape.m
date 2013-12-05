@@ -23,10 +23,10 @@ for i=1:size(shape,3)
     normalised_shape(:,:,i) = unshifted_normalized_shape;
 end
 
-%centered_shape = shift_shape(normalised_shape,mean(normalised_shape,3));
-%shifted_shape = shift_shape(centered_shape,min(normalised_shape));
-%wraped_shape = scale_shape(shifted_shape,max(normalised_shape),face_dim);
-wraped_shape = shift_scale_shape(normalised_shape,face_dim(1),face_dim(2));
+centered_shape = shift_shape(normalised_shape,mean(normalised_shape));
+shifted_shape = shift_shape(centered_shape,min(normalised_shape));
+wraped_shape = scale_shape(shifted_shape,max(shifted_shape),face_dim);
+%wraped_shape = shift_scale_shape(normalised_shape,face_dim(1),face_dim(2));
 
 end
 

@@ -1,4 +1,4 @@
-function [matrix] = convert_blink_dataset_to_matrix(blink_dataset_path,video_dir,shape_dir,corrupted_videos)
+function [matrix] = convert_blink_dataset_to_matrix(blink_dataset_path,video_dir,shape_dir,corrupted_videos,database)
 
 load(blink_dataset_path)
 
@@ -9,7 +9,9 @@ for i=1:nb_videos
 	video_mat = dir([video_dir '/' blink_dataset{i}.name '*.avi']);
 	shape_mat = dir([shape_dir '/' blink_dataset{i}.name '*.mat']);
 
-	if identify_corruption(video_mat.name,corrupted_videos)
+    [~,video_number] = extract_video_information([video_dir '/' video_mat.name],database);
+    
+	if ismember(video_number,corrupted_videos)
 		disp('video corupted')
 	else
 		nb_rows = size(blink_dataset{i}.blinks,1);

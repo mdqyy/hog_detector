@@ -27,8 +27,8 @@ bbox = calculate_bbox(normalised_shape,patch_ind);
 patch_texture = crop_texture(normalised_texture, bbox); 
 
 % calculate final shape
-temp_shape   = shift_shape(normalised_shape(patch_ind,:,:),bbox(:,1)');
-patch_shape = scale_shape(temp_shape,face_dim,[bbox * [-1 1]']');
+patch_shape   = shift_shape(normalised_shape(patch_ind,:,:),bbox(:,1)');
+%patch_shape = scale_shape(temp_shape,face_dim,[bbox * [-1 1]']');
 
 
 end
