@@ -23,7 +23,7 @@ function [model] = machine_learning(training,labels,algorithm,options)
     
     if strcmp(algorithm,'svm')
        
-        model = svmtrain(training,labels,'options',options);
+        model = svmtrain(training,labels,options);
         
     end
         
