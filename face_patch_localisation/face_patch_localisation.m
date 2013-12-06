@@ -21,7 +21,7 @@ normalised_texture = normalise_texture(video_path,normalised_shape,shape,width,h
 
 % bounding box
 disp('calculating bbox..')
-bbox = calculate_bbox(normalised_shape,patch_ind)
+bbox = calculate_bbox(normalised_shape,patch_ind);
 
 % crop texture box
 patch_texture = crop_texture(normalised_texture, bbox); 

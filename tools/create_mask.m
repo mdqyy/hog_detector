@@ -8,6 +8,7 @@ function [mask] = create_mask(dimensions,shape)
 	shape = double(shape);
 
 	% calculate the convex hull for the left eye
-	mask = poly2mask( shape(:,1),shape(:,2),height,width);
+	mask = poly2mask( shape(:,1),shape(:,2),height,width) ;
+    
 
  end

@@ -24,9 +24,7 @@ function [predictions] = classify(model,test_set,algorithm)
 
     if strcmp(algorithm,'svm')
         
-        predictions = svmclassify(model,test);
-        
-    end
+        predictions = svm
 
 
 end

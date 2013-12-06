@@ -19,6 +19,14 @@ function [model] = machine_learning(training,labels,algorithm,options)
 
 		end
 
-	end
+    end
+    
+    if strcmp(algorithm,'svm')
+       
+        model = svmtrain(training,labels);
+        
+    end
+        
+        
 
 end

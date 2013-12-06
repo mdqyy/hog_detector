@@ -4,7 +4,7 @@ function [examples,targets] = pre_processing(aam_path,blinks_data_struct,descrip
 nb_examples = length(blinks_data_struct);
 
 % the feature size can be extracted by calculating the descriptor in a black image
-feature_size = size(calculate_descriptor(zeros(target_texture_dimensions),zeros(49,2),target_texture_dimensions,descriptor,options));
+feature_size = size(calculate_descriptor(zeros(target_texture_dimensions),zeros(6,2,11),target_texture_dimensions,descriptor,options));
 
 % initialisation of our matrices for speed efficiency
 examples = zeros([nb_examples,feature_size]);

@@ -1,4 +1,4 @@
-clear all
+%clear all
 addpath(genpath('.'))
 
 video_dir = '/vol/hci2/projects/Aaron/DeceptionVideos/CulturalBenchmarks/CAM2';
@@ -28,10 +28,10 @@ options.n_bins  = 9;
 options.w_cell  = 8;
 options.w_block = 2;
 options.gamma   = 1;
-options.sigma   = 8;
-options.block_step = 1;
+options.sigma   = options.w_cell * options.w_block/2;
+options.block_step = options.w_block /2;
 
-descriptor = 'hog';
+descriptor = 'shape';
 
 target_dimensions = [24,40,11];
 
